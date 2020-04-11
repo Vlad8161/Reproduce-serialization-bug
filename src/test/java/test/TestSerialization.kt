@@ -6,17 +6,15 @@ import org.junit.Test
 class TestSerialization {
 
     @Test
-    fun case1() {
-        SomeClass.Payload.serializerModule
-        val someClass = SomeClass(
-            id = "123",
-            payload = SomeClass.Payload.Payload1(
-                a = 1
-            )
-        )
-        val someClass2 = SomeClass(
-            id = "321",
-            payload = SomeClass.Payload.Payload2(a = 1, b = 2)
-        )
+    fun success() {
+        SomeClass.serializerModule
+        val someClass = SomeClass.SomeClass1(a = 1)
+        val someClass2 = SomeClass.SomeClass2(a = 1, b = 2)
+    }
+
+    @Test
+    fun error() {
+        val someClass = SomeClass.SomeClass1(a = 1)
+        val someClass2 = SomeClass.SomeClass2(a = 1, b = 2)
     }
 }
